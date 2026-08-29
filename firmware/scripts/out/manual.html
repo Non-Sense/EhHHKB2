@@ -1,0 +1,832 @@
+<!doctype html><meta charset="utf-8">
+<title>EhHHKB2 Menu Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f2ee;
+  --surface: #ffffff;
+  --surface-2: #ebe7e0;
+  --ink: #1c1f22;
+  --muted: #5c6570;
+  --accent: #0f8b8d;
+  --accent-ink: #ffffff;
+  --border: #dcd8d0;
+  --code-bg: #ece9e2;
+  --shadow: 0 1px 2px rgba(28,31,34,0.06), 0 8px 24px rgba(28,31,34,0.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c0f12;
+    --surface: #14181c;
+    --surface-2: #1b2126;
+    --ink: #e7ecef;
+    --muted: #8a97a0;
+    --accent: #57e6d9;
+    --accent-ink: #06201e;
+    --border: #232a30;
+    --code-bg: #1b2126;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c0f12;
+  --surface: #14181c;
+  --surface-2: #1b2126;
+  --ink: #e7ecef;
+  --muted: #8a97a0;
+  --accent: #57e6d9;
+  --accent-ink: #06201e;
+  --border: #232a30;
+  --code-bg: #1b2126;
+  --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Public Sans", "Hiragino Sans", "Yu Gothic", sans-serif;
+  line-height: 1.65;
+  font-size: 16px;
+}
+code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: var(--code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 0;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ---- サイドバー ---- */
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1.25rem;
+  border-right: 1px solid var(--border);
+}
+.brand {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.2rem;
+}
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 0 0 1.75rem;
+}
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc-group {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1.4rem 0 0.5rem;
+}
+.toc-group:first-child { margin-top: 0; }
+.toc a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 0.32rem 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.7rem;
+  margin-left: -0.7rem;
+  opacity: 0.92;
+}
+.toc a:hover { opacity: 1; border-left-color: var(--accent); color: var(--accent); }
+
+/* ---- メイン ---- */
+main { padding: 2.5rem 3rem 6rem; min-width: 0; }
+.hero h1 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+  text-wrap: balance;
+}
+.hero p.lede {
+  color: var(--muted);
+  max-width: 62ch;
+  font-size: 1.02rem;
+  margin: 0 0 1.6rem;
+}
+.fact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.6rem;
+}
+.fact {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.fact b { color: var(--ink); font-weight: 600; }
+
+section { margin: 3.2rem 0; scroll-margin-top: 1.5rem; }
+section > h2 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.3rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+section > h3 {
+  font-size: 0.95rem;
+  margin: 2.2rem 0 0.2rem;
+}
+section > p.section-lede {
+  color: var(--muted);
+  max-width: 66ch;
+  margin: 0.8rem 0 1.4rem;
+}
+
+/* ---- 操作テーブル ---- */
+table.keys {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+table.keys th, table.keys td {
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+table.keys th {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-2);
+}
+table.keys tr:last-child td { border-bottom: none; }
+table.keys td.key { font-family: "JetBrains Mono", monospace; color: var(--accent); white-space: nowrap; }
+.table-wrap { overflow-x: auto; }
+
+/* ---- 画面カード ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.1rem;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.oled {
+  background: #0a0d10;
+  padding: 14px 14px 16px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.oled::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.screen-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  image-rendering: pixelated;
+  border-radius: 3px;
+  background: #04080d;
+  box-shadow: 0 0 14px rgba(87, 230, 217, 0.18);
+}
+.card-body { padding: 1rem 1.15rem 1.2rem; }
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+.card-head h3 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+.kbd-hint {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.card-body p { margin: 0 0 0.4rem; font-size: 0.9rem; color: var(--ink); }
+.card-body .item-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+.card-body .item-list li { margin: 0.15rem 0; }
+
+/* ---- アイコン凡例 ---- */
+.icon-legend {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 1.6rem;
+}
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.icon-row:last-child { border-bottom: none; }
+.icon-frame {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  background: #0a0d10;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-img {
+  width: 48px;
+  height: 64px;
+  image-rendering: pixelated;
+}
+.icon-text { display: flex; flex-direction: column; gap: 0.1rem; }
+.icon-label { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 0.9rem; }
+.icon-desc { color: var(--muted); font-size: 0.86rem; }
+
+/* ---- 遷移図（インライン SVG） ---- */
+.flow {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+  overflow-x: auto;
+}
+.flow-svg { width: 100%; min-width: 780px; height: auto; display: block; }
+.flow-svg .box { fill: var(--surface-2); stroke: var(--muted); stroke-opacity: 0.5; stroke-width: 1; }
+.flow-svg .box-close { stroke-opacity: 0.85; stroke-dasharray: 4 3; }
+.flow-svg .box-term { fill: none; stroke: var(--accent); stroke-opacity: 1; stroke-width: 1.5; }
+.flow-svg text { font-family: "Public Sans", "Hiragino Sans", "Yu Gothic", sans-serif; }
+.flow-svg .box-title { fill: var(--ink); font-size: 13px; font-weight: 600; }
+.flow-svg .box-sub { fill: var(--muted); font-size: 10.5px; }
+.flow-svg .edge { fill: none; stroke: var(--muted); stroke-opacity: 0.55; stroke-width: 1.4; }
+.flow-svg .edge-label { fill: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 10.5px; }
+.flow-svg .arrow-head { fill: var(--muted); fill-opacity: 0.75; }
+.flow-note { color: var(--ink); font-size: 0.88rem; margin: 0.9rem 0 0; max-width: 66ch; }
+
+/* ---- フォント一覧 ---- */
+.font-sheet {
+  background: #0a0d10;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  box-shadow: var(--shadow);
+}
+.font-sheet img { width: auto; max-width: 100%; height: auto; display: block; margin: 0 auto; image-rendering: pixelated; }
+
+/* ---- 注意事項 ---- */
+.notes {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.3rem;
+}
+.notes ul { margin: 0; padding-left: 1.2rem; }
+.notes li { margin: 0.5rem 0; font-size: 0.92rem; color: var(--ink); }
+.notes li b { color: var(--ink); font-weight: 600; }
+
+footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 3rem 3rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.4rem 1.25rem;
+  }
+  main { padding: 2rem 1.25rem 4rem; }
+  footer { padding: 0 1.25rem 2rem; }
+}
+</style>
+
+<div class="layout">
+  <nav class="sidebar">
+    <p class="brand">EhHHKB2</p>
+    <p class="brand-sub">メニュー操作ガイド</p>
+    <ul class="toc">
+      <li class="toc-group">はじめに</li>
+      <li><a href="#start">起動と基本操作</a></li>
+      <li class="toc-group">通常表示</li>
+      <li><a href="#status">ステータス画面</a></li>
+      <li class="toc-group">コンフィグメニュー</li>
+      <li><a href="#flow">画面遷移</a></li>
+      <li><a href="#menu">各画面の詳細</a></li>
+      <li class="toc-group">リファレンス</li>
+      <li><a href="#icons">アイコンとマーカー</a></li>
+      <li><a href="#font">内蔵フォント</a></li>
+      <li><a href="#notes">既知の制限</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>EhHHKB2 メニュー操作ガイド</h1>
+      <p class="lede">
+        128×32 の OLED に表示される全画面と、内蔵 6×8 ドットフォントの見え方を
+        実際のフォントデータから再現したプレビューでまとめたガイド。
+        キーボードだけで接続先の切り替え・ボンド管理・名前変更ができる。
+      </p>
+      <div class="fact-strip">
+        <span class="fact">ディスプレイ <b>SSD1306 128×32</b></span>
+        <span class="fact">フォント <b>6×8（5×7 + 字間1px）</b></span>
+        <span class="fact">メニュー起動 <b>FN2 + End</b></span>
+        <span class="fact">表示行数 <b>最大4行</b></span>
+        <span class="fact">BLEスロット <b>6</b></span>
+      </div>
+    </div>
+
+    <section id="start">
+      <h2>起動と基本操作</h2>
+      <p class="section-lede">
+        <code>_FN2</code>（<code>FN</code>+<code>Esc</code> 押下中）+ <code>End</code> でコンフィグメニューを開く。
+        メニュー表示中は HID 送信を止めるため、操作キーがホストに漏れることはない。
+      </p>
+      <table class="keys">
+        <thead><tr><th>キー</th><th>動作</th></tr></thead>
+        <tbody>
+          <tr><td class="key">↑ / ↓</td><td>カーソルを移動する（末尾で反対側へループする）</td></tr>
+          <tr><td class="key">Enter</td><td>選択項目を決定する。名前入力画面ではその場で確定する</td></tr>
+          <tr><td class="key">Esc</td><td>ひとつ前の画面へ戻る（<code>Battery</code> / <code>Boot mode</code> は <code>Misc</code> へ戻る）。トップメニューで押すとメニューを終了する</td></tr>
+          <tr><td class="key">A–Z, 0–9, Space, - / _</td><td>名前入力画面でのみ有効。<code>Backspace</code> で1文字削除</td></tr>
+        </tbody>
+      </table>
+
+      <h3>メニューを開かずに使うショートカット</h3>
+      <p class="section-lede">よく使う操作は <code>_FN2</code> レイヤーへ直接割り当ててある。</p>
+      <table class="keys">
+        <thead><tr><th>キー</th><th>動作</th></tr></thead>
+        <tbody>
+          <tr><td class="key">_FN2 + 1–6</td><td>BLE スロット <code>BT1</code>–<code>BT6</code> へ接続を切り替える</td></tr>
+          <tr><td class="key">_FN2 + 7</td><td>BT を無効化して USB 専用にする</td></tr>
+          <tr><td class="key">_FN2 + Space</td><td>ペアリング開始 / 中止</td></tr>
+          <tr><td class="key">_FN2 + Z</td><td>全スロットのボンドと名前を削除する</td></tr>
+          <tr><td class="key">_FN2 + End</td><td>コンフィグメニューを開く</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="status">
+      <h2>ステータス画面</h2>
+      <p class="section-lede">
+        メニューを開いていないときの通常表示。上段に接続先、右端にバッテリー残量、
+        下段にホストから通知された Lock キーの状態を表示する。
+      </p>
+      <div class="grid">
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIcUlEQVR4nO3ZMZKbMABAUTbjIlVc+Arc/0QUuQAFRerkBGE2SxiQ/3stA8iS7PEfffz89Xv6u/n1nM6xrNsl7+V/rdF5rP79jfj9tZ8BAEb593Xe/8lvJz0XAAAAbkUAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAg4bF/eVm3navz6/nlexnd/uofcWTXwdfYzwAA/+q84juvCJwAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQ8Ni/PL+eO1eXdTvp3iPOe/L+J6qNeUQjzvOIYz7iyK/K+7nqN9Z+BgDelRNgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASHtPbmV/Pk568rNuX33vk3nva/0RHHJmNq+Z5xL1Re++I+/mqmbSfAYB35QQYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICEx5Gb59dzup9l3a4eQsJ5q7+/gvfcdYy+gvcc1VVjHnE2AAA+wwkwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJj2lAy7rtXJ1fz0vee09XzRVl+/vKngQA4CpOgAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASHhMA5pfz52ry7pN93PVmPffe8Q9xzziPI845vPeu/95rxozn1fbzwDAWJwAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQ8PH4/uPqMQAAAMDpnAADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAADAV/AE+g5h7kwlh0QAAAABJRU5ErkJggg==" alt="BLE接続中（名前あり）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE接続中（名前あり）</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>スロットに名前を付けている場合は <code>BLE rename</code> で設定した名前を表示する。右端はバッテリー残量アイコン（この例は満充電）。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIBElEQVR4nO3ZMW7jMBRAQTtQsVVU6Aq6/4lU5AIqVKROEKRXsQZXXr+ZljBJU9XDv398ft2usC7zX/9224/b83nOf/TIrQAAAP5944yrmLdB+wIAAMBTEcAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEi4f3x+nSyvyzzo4G0/nPvC7wwAALy2bVhrjNvZBBgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgITp6gtUrMt89RUAAADSTIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEiYzpe3/Rh08LrMg3auOf9G3hkAAOCXCTAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAnT+fK6zIMO3vbjknP/R94KAAB4pYq5igkwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ09UX4Me2HycPsS6zZwIAAHiQCTAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAnT+fK2H4MOXpf5VvLIS/oKAAAAjzMBBgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAg4T79eb/6DgAAADCcCTAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAALeCbwhzPtYoBJjVAAAAAElFTkSuQmCC" alt="BLE接続中（名前未設定）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE接続中（名前未設定）</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>名前が空のスロットは <code>BT1</code>〜<code>BT6</code> を表示する。基板の配線都合で内部のスロット番号とは逆順（内部スロット0が <code>BT6</code>、内部スロット5が <code>BT1</code>）だが、一覧は常に上から <code>BT1</code>→<code>BT6</code> の昇順に並ぶ。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIKUlEQVR4nO3ZsZGdMBRAUdZD4Mg/oAX6r4jADRAQOLYrsJK1zGfvOakG6Y0i7ujj56/fy9/t22uZ4zivSeeOd55nPPN7TgUAADzdvLb6er7dPQAAAAD8DwIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ6/JAx3kNVvfttTzNvJm/3l0BAEDN+K/+iUVw3DSVF2AAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABLWuwcAAACoO85rsLpvrzf8dmy88128AAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkLAuD7Rvr8HqcV63nPsZT5wZAAAoO6ZVzGd2HheQF2AAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABLW5cvZt9eknY/zmnTuE2cGAAD+lbv+zPebKmbcKfPO9QIMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAEDCevcAAAAAjBznNenbfXu94dXPm8oLMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACeu+vQbLx3lNOnh87ti8qebNPPae9wwAAPCVOsULMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACR/r9x93zwAAAADTeQEGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAAGAp+ANtuVJjGcEc6QAAAABJRU5ErkJggg==" alt="USB接続中" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>USB接続中</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>BT を無効化して USB 専用にすると <code>USB</code> 表示になる。右端は USB アイコン（トライデント）と、その右に充電中を示す矢印。USB ホストとして認識された瞬間に BT は自動で OFF になる（充電器のみでは発動しない）。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIE0lEQVR4nO3ZMXKjMABAUXuHItVScAXufyKKXICCInUyewGKdRTs/PdaBkmWKPxH9/ePz9sV1mUeNPK2H4NGrq153Kqu2mcAAOBnPFIT44rgz6BxAQAA4KkIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJNzfPz5PHq/LPGjibT/+e95H3n2EeX/3PgMAAN/1v32cR4rADTAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAwnT+eNuPQROvyzxoZH6GbwMAAHgtboABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEiYzh+vy3x7Ndt+XL2EhPNv4/wUXvG7AgAAXp0bYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEqbbr7Mu86CRt/0YNHLtFM53ctwJAgAAZW6AAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABImK5eAP9s+zHo3XWZn3CLz1f1ir8IAAB4fm6AAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIuE9vf69eAwAAAAznBhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgFvBF6Q2RWBXyqZEAAAAAElFTkSuQmCC" alt="ペアリング中" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>ペアリング中</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p><code>_FN2</code>+<code>Space</code>（または <code>Pairing</code> メニュー）でオープン広告を始めると <code>PAIR</code> と表示する。ペアリングは Just Works なので、パスキーの表示・入力は無い（下記「既知の制限」を参照）。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAHwElEQVR4nO3ZsW3DMBBAUTlg4coqtIL2n0grqNAG2cBAgiiW/d9rCRIHdh93G/fHBAAAAH9n249f312XeTrH10nvAgAAwKUIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJIxXDwAAAMD72fbjyem6zBd82QYYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIGFs+zFdz7rMT07N/D//DAAA8ElsgAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBjrMk/vxswAAAD8lA0wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQMJ49QAAAAB8mm0/puuxAQYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIOE27o9XzwAAAACnswEGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAAGAq+AYKMBhH+vXTQAAAAABJRU5ErkJggg==" alt="未接続" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>未接続</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>BT 有効だがどのホストにも接続していない、かつペアリング中でもない状態。<code>---</code> を表示する。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIgUlEQVR4nO3ZMY6bQABAURJRpIoLX8H3PxFFLkBBkTo5QVC0GMH4v9ciYBhmvXzNt1+//0z/9no+pnMs63bJfXnXOzqPt39/I/79Ws8A0HHVt8qI30j3/Po6b66+n3RdAAAAuBUBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACAhHn/8LJuO0dfz8eXz2V0+2//iCOrDr7GegaADo3zLucV33lFYAcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICEef/w6/nYObqs20nnHnHelfefqDbmEY04zyOO+Ygjvyqf56rfWOsZgM82YuPwLnaAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABImKeP83o+Trrysm5fvu+Rc+9p/4mOODIbV83ziGujdt8R1/NVM2k9AwCfyg4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ85GTX8/HdD/Lul09hITz3v7+G7znqmP0N3jPUV015hFnAwDexf/Bz2YHGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACAhHka0LJuO0dfz8cl972nq+aKsv11ZU0CAHAVO8AAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACTM04Bez8fO0WXdpvu5asz79z3inmMecZ5HHPN5991/3qvGzP+rrWcAYCx2gAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASPg2//h59RgAAADgdHaAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAACYCv4C89uqe6vh8YgAAAAASUVORK5CYII=" alt="Macモード ON" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Macモード ON</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>接続中のスロットが Mac モードのときだけ、バッテリーアイコンの左に <code>M</code> を出す。Mac モード中は <code>Ctrl</code> と <code>GUI(Win)</code> の usage を入れ替えて送信する。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="LEDインジケータ点灯" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>LEDインジケータ点灯</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>ホストが通知した Lock 状態を下段に <code>NUM</code> / <code>CAP</code> / <code>SCR</code> の固定位置で表示する（消灯中の項目は描かれない）。本機に物理 LED は無い。USB・BLE どちらの接続でも Output レポートを受け取って反映する。</p>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2>画面遷移</h2>
+      <p class="section-lede">トップメニューから各機能画面への遷移。<code>Esc</code> は逆方向へ一段ずつ戻る。</p>
+      <div class="flow">
+        <svg class="flow-svg" viewBox="0 0 810 530" role="img"
+           aria-label="コンフィグメニューの画面遷移">
+        <defs>
+          <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4"
+                  markerWidth="7" markerHeight="7" orient="auto">
+            <path class="arrow-head" d="M0 0 L8 4 L0 8 z"/>
+          </marker>
+        </defs>
+        <path class="edge" d="M128 186 H156 V186 H177" marker-end="url(#flow-arrow)"/>
+        <text class="edge-label" x="156" y="180" text-anchor="middle">FN2+End</text>
+        <path class="edge" d="M296 186 H316 V30 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V82 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V134 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V186 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V238 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V290 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M296 186 H316 V342 H329" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M460 186 H480 V186 H493" marker-end="url(#flow-arrow)"/>
+        <text class="edge-label" x="480" y="180" text-anchor="middle">Enter</text>
+        <path class="edge" d="M460 238 H480 V238 H493" marker-end="url(#flow-arrow)"/>
+        <text class="edge-label" x="480" y="232" text-anchor="middle">Enter</text>
+        <path class="edge" d="M460 342 H480 V342 H493" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M460 342 H480 V394 H493" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M460 342 H480 V446 H493" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M460 342 H480 V498 H493" marker-end="url(#flow-arrow)"/>
+        <path class="edge" d="M636 498 H656 V498 H669" marker-end="url(#flow-arrow)"/>
+        <text class="edge-label" x="656" y="492" text-anchor="middle">Enter</text>
+        <rect class="box box-plain" x="8" y="166" width="120" height="40" rx="7"/>
+        <text class="box-title" x="19" y="183">ステータス画面</text>
+        <text class="box-sub" x="19" y="198">通常表示</text>
+        <rect class="box box-plain" x="184" y="166" width="112" height="40" rx="7"/>
+        <text class="box-title" x="195" y="183">Top menu</text>
+        <text class="box-sub" x="195" y="198">7 項目</text>
+        <rect class="box box-close" x="336" y="10" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="27">Connect</text>
+        <text class="box-sub" x="347" y="42">USB / BT1-6</text>
+        <rect class="box box-close" x="336" y="62" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="79">Pairing</text>
+        <text class="box-sub" x="347" y="94">開始 / 中止</text>
+        <rect class="box box-stay" x="336" y="114" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="131">Mac mode</text>
+        <text class="box-sub" x="347" y="146">ON/OFF 切替</text>
+        <rect class="box box-plain" x="336" y="166" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="183">BLE rename</text>
+        <text class="box-sub" x="347" y="198">スロット選択</text>
+        <rect class="box box-plain" x="336" y="218" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="235">BLE swap</text>
+        <text class="box-sub" x="347" y="250">入れ替え元</text>
+        <rect class="box box-stay" x="336" y="270" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="287">BLE reset</text>
+        <text class="box-sub" x="347" y="302">ボンド削除</text>
+        <rect class="box box-plain" x="336" y="322" width="124" height="40" rx="7"/>
+        <text class="box-title" x="347" y="339">Misc</text>
+        <text class="box-sub" x="347" y="354">4 項目</text>
+        <rect class="box box-plain" x="500" y="166" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="183">名前入力</text>
+        <text class="box-sub" x="511" y="198">Ent:OK Esc:X</text>
+        <rect class="box box-stay" x="500" y="218" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="235">入れ替え先</text>
+        <text class="box-sub" x="511" y="250">元は (F)</text>
+        <rect class="box box-plain" x="500" y="322" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="339">Battery</text>
+        <text class="box-sub" x="511" y="354">電圧 + 残量</text>
+        <rect class="box box-close" x="500" y="374" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="391">Display On/Off</text>
+        <text class="box-sub" x="511" y="406">手動消灯の切替</text>
+        <rect class="box box-close" x="500" y="426" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="443">Quiet On/Off</text>
+        <text class="box-sub" x="511" y="458">SMPS モード切替</text>
+        <rect class="box box-plain" x="500" y="478" width="136" height="40" rx="7"/>
+        <text class="box-title" x="511" y="495">Boot mode</text>
+        <text class="box-sub" x="511" y="510">continue?</text>
+        <rect class="box box-term" x="676" y="478" width="126" height="40" rx="7"/>
+        <text class="box-title" x="687" y="495">BOOTSEL 再起動</text>
+        <text class="box-sub" x="687" y="510">UF2 書き込み</text>
+      </svg>
+      </div>
+      <p class="flow-note">
+        点線の枠は、決定するとメニューを閉じて通常表示へ戻る項目。
+        <code>Mac mode</code> / <code>BLE reset</code> / 入れ替え先 は決定後も画面に留まるので、
+        続けて別のスロットを操作できる。
+      </p>
+    </section>
+
+    <section id="menu">
+      <h2>各画面の詳細</h2>
+      <p class="section-lede">
+        トップメニューの7項目と、その先の子画面。取り消し線・<code>(C)</code>・<code>(F)</code>・
+        カーソルの<code>&gt;</code>は実機の描画ロジックをそのまま再現している。
+      </p>
+      <div class="grid">
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="トップメニュー" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>トップメニュー</h3>
+            <span class="kbd-hint">FN2+End で起動</span>
+          </div>
+          <p><code>_FN2</code>+<code>End</code> で開く最初の画面。<code>↑</code>/<code>↓</code> で <code>&gt;</code> カーソルを動かし、<code>Enter</code> で決定する。7 項目あるが 1 画面は 4 行なので、入りきらない分はカーソルに追従してスクロールする。</p><ul class="item-list"><li>Connect — 接続先の切り替え</li><li>Pairing — ペアリングの開始 / 中止</li><li>Mac mode — スロットごとの Ctrl/GUI 入れ替え</li><li>BLE rename — スロット名の変更</li><li>BLE swap — スロットの中身の入れ替え</li><li>BLE reset — ボンドの削除</li><li>Misc — Battery / Display / Quiet / Boot mode</li></ul>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="トップメニュー（スクロール後）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>トップメニュー（スクロール後）</h3>
+            <span class="kbd-hint">↓ で下端へ</span>
+          </div>
+          <p>カーソルが表示窓の下端に達すると 1 行ずつ送られる（窓の先頭はカーソルの 1 つ上に張り付く）。カーソルは末尾で反対側へループするので、開いた直後に <code>↑</code> を 1 回押すだけでも最下段の <code>Misc</code> に届く。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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AQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABKGqwcA+K95GneWY1k3i/UG++u8f4/2HTkXAOA4O8AAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQMVw9QMU/jztFl3S4594j96x4597yZKTvyHp133Xt+oyMzf946AwCfxA4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ38PP79UzAAAAwOnsAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkDBcPUDFsm6XXHeexsfNfOQbPXFmAADgPewAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQ8D38/F49Q8KybjtH52l03Zu76g4CAACvYgcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICE4eoB4C6Wdds5Ok/jG2cBAABezw4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJw9UD8MeybictxDyNlvgla7V/j6wzAADcnx1gAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAAShqsH4I95Gk9aiGXdLrnu59lfK+sMAAD3ZwcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICE4eoB4JWWdds5Ok+j5QYAgCw7wAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAxXD8Afy7qdtBDzNKaWeP/7WmcAACizAwwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQML38PN79QwAAABwOjvAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAB8FfwDRwGVuRgA+CYAAAAASUVORK5CYII=" alt="Connect（接続先選択）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Connect（接続先選択）</h3>
+            <span class="kbd-hint">Enter で切替</span>
+          </div>
+          <p>先頭が <code>USB</code>、続いて <code>BT1</code>〜<code>BT6</code>。取り消し線はボンドが無い（未ペアリング）スロット、右端の <code>(C)</code> は現在の接続先を示す。取り消し線のスロットと接続中のスロットは選んでも何も起きない。切り替えを決定するとメニューは閉じる。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="Mac mode（スロットごと）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Mac mode（スロットごと）</h3>
+            <span class="kbd-hint">Enter でトグル</span>
+          </div>
+          <p>行の右端の <code>ON</code> / <code>OFF</code> が現在値。<code>Enter</code> で切り替えても画面は開いたままなので、続けて他のスロットも変更できる。値はスロットごとにフラッシュへ保存される。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAKrUlEQVR4nO3aPXKrWhpA0ecuAkcmYArMf0RMgYAZdCnrpKlXRgjwXiulJI4+fu7ddfw1fP/88/8t67ZzdJ7GnaP8+0me58g1umrN+86769zt95+Va3R/T3zX8RlPfH7dzwB/z3+uXgAAAAB8ggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAEDCsH94nsado8u6/fqzfGZWR67RkVXd897YXxWfmfORtwpPd893HfyO+xngiewAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQMBz58DyNO0eXdfv1Z+EMR+5YPjPnq67Red983rvuiWt+oifO+YlrPsL/N941jSN3jvsZeAo7wAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAznffU8jTtHl3X79Wf/nv1pHFGbJNztSTnyrvt778l7vuuumvMT743aeZ94P181Sfcz8BR2gAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBjO++pl3XaOztN43qkf57xpuArczT2f/f0nhXfxruN3z+A93xv3XNVVa37iNIAmO8AAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQMRz68rNvO0Xkaj3w5wBtd9b7aP+89ebfzefvPoHsSgHexAwwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQMKwf3hZt52j8zS+ez1R+3M+wjV615w9C0+3/yyc9ww+cc3nvTfuueYnzvmJaz7vvN7PT1e7n4Fr2QEGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACDha/j+uXoNAAAAcDo7wAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAxXL6BiWbdLzjtP4+PW/MRfdGRVT7Q/yfOmUTsvn+G+ugNPGQCfYQcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICE4eoF8DJP40mDWNbt1+c9sqoj5z2idl4+wxUEAPgb7AADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAwXL0AeKd5Gg2UX1jW7YZ33f6q9s97z1/0REeuwlWOXP19R37vkVXd8yrcc84A7LMDDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAwnD1AnhZ1u2kQczTaMQfuEbm/PRJ7p/3vCf0npO85zW6ypF747xZPfG895zk35szAPvsAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkDBcvQBe5mk8aRDLul1y3icyK57F83v/q7D/VuHpXF+AJ7IDDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAwnD1AuBzlnXbOTpP4wfXAvx9+2+V/TcS93/z+1cD4InsAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkDBcvQBelnU7aRDzNKZGfGSSrsK77qv9SZ732XveObVnkM848hydd957/qIja/57cwbADjAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAlfw/fP1WsAAACA09kBBgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgYbh6ARXLul1y3nkaH7fmI7/oiWsGAAA+ww4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJX8P3z9VrSFjWbefoPI3Oe3NXXUEAAOBd7AADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAwXL0AuItl3XaOztP4wbUAAADvZwcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICE4eoF8LKs20mDmKfRiN8yq/1rZM4AAHB/doABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgYrl4AL/M0njSIZd0uOe/fsz8rcwYAgPuzAwwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQMJw9QLgnZZ12zk6T6NxAwBAlh1gAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAAShqsXwMuybicNYp7G1Ij3f685AwBAmR1gAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASvobvn6vXAAAAAKezAwwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQMJw9QIqlnW75LzzND5uzef9oiP2p3HVqgAAgH/PDjAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAnD1QvgZZ7GkwaxrNuvz3tkVUfOe5X9NQMAAE9nBxgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgITh6gXA5yzrtnN0nsZffxYAALg/O8AAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQMVy+Al2XdThrEPI2pEe9PsjYNAADgf9kBBgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgYbh6AbzM03jSIJZ1u+S897Q/jfO+uTZnAAC4JzvAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkDFcvAN5pnsaTBrqs2yXnBQAA3sUOMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACcPVC+BlWbeTBjFPoxEDAADYAQYAAKDCn0ADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACDha/j+uXoNAAAAcDo7wAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAA/FPwX1JjvkiVHaliAAAAAElFTkSuQmCC" alt="BLE rename（スロット選択）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE rename（スロット選択）</h3>
+            <span class="kbd-hint">Enter で編集へ</span>
+          </div>
+          <p>名前を変更するスロットを選ぶ。名前が設定済みのスロットは <code>BT1 MacBookPro</code> のように現在の名前を添えて表示する。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="名前入力" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>名前入力</h3>
+            <span class="kbd-hint">Enter:確定 Esc:戻る</span>
+          </div>
+          <p>英数字・空白・<code>-</code>（Shift で <code>_</code>）を最大 10 文字入力できる。末尾の <code>_</code> は入力カーソル、<code>Backspace</code> で 1 文字削除する。<code>Enter</code> で確定して一覧へ戻り、<code>Esc</code> は保存せずに一覧へ戻る。空のまま確定すると名前を削除する。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="BLE swap（入れ替え元）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE swap（入れ替え元）</h3>
+            <span class="kbd-hint">Enter で次へ</span>
+          </div>
+          <p>スロットの中身（ボンド・名前・Mac モード）をまるごと入れ替える機能。まず入れ替え元を選ぶ。表示は <code>BLE reset</code> と同じで、取り消し線が未ペアリング、<code>(C)</code> が接続中。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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gAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJEyjB+Dbusw3LcS2H0PO+/ucr5V1BgCA57MDDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAwjR6AHilbT9Ojq7LbLkBACDLDjAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAnT6AH4tu3HTQuxLnNqic+v1zoDAECZHWAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABI+ps+v0TMAAADA7ewAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQMI0eoGLbjyHnXZf57Wa+74quOF+NUVMBAAB/zw4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ0+gB+LYu800Lse3Hj897Zaor5x3lfGYAAODd2QEGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBhGj0A/DvbfpwcXZf5x68FAACezw4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJH9Pn1+gZErb9GD0CD7Uu8+gRAAAgwQ4wAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJ0+gB+LYu800Lse3HydHaeUe573oBAIC/ZwcYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAICEafQA8ErrMt+0oNt+DDkvAADwKnaAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABImEYPwLdtP25aiHWZLTEAAIAdYAAAACr8CzQAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABI+ps+v0TMAAADA7ewAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAADwp+C/WI2PMbM2x88AAAAASUVORK5CYII=" alt="BLE swap（入れ替え先）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE swap（入れ替え先）</h3>
+            <span class="kbd-hint">Enter で実行</span>
+          </div>
+          <p>入れ替え元のスロットには <code>(F)</code> が付く。別のスロットを選ぶとその場で入れ替え、入れ替え元の選択へ戻る（続けて別の組も入れ替えられる）。どちらかに接続中だった場合は切断される。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="BLE reset（ボンド削除）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>BLE reset（ボンド削除）</h3>
+            <span class="kbd-hint">Enter で削除</span>
+          </div>
+          <p>スロットを選んで <code>Enter</code> を押すとそのボンドを削除する（確認画面は無い）。取り消し線はすでに未ペアリングであることを示す。画面は閉じないので、続けて他のスロットも消せる。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAALCUlEQVR4nO3ZMW7rOBiF0XjAIlVUaAva/4q0BRXawSCY+nHyzNAkfc9pBUu/KdrABz7K59fHn53XXbl67FvlKj9fyX68o5+/hTnXasWZAQBgTv+MHgAAAABeQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQodQvH/tWuXpe99Of5TVr5R0BAAD8xwkwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEUrLh499q1w9r/vpzzK/+vtt0bI3WqYatWNXnPn99kbLv9mcM7eYc18BALRzAgwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAECE0u/Wx75Vrp7X/fRn3099NVr0W8l+d27ZGyvuuhVnHjVVv+eueGcAAP6WE2AAAAAiCGAAAAAiCGAAAAAiCGAAAAAiCGAAAAAiCGAAAAAiCGAAAAAiCGAAAAAiCGAAAAAilH63Pq+7cvXYt36PXk6/1ej3Fup3JtmKe6Pfb7DlzvXPrrjOAABjOQEGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgQmn58HndlavHvrXcnOFGvd/6c+e04m+h38xzft/34zcIAPC3nAADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQ4VE+vyqXz+uuXD32rcNI76m+kv30e0e+0WvWud9bWHFvtMz8fv9mc64zAMDMnAADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQQQADAAAQ4VE+v0bPAAAAAN05AQYAACCCAAYAACCCAAYAACCCAAYAACCCAAYAACCCAAYAACCCAAYAACCCAAYAACCCAAYAACBCGT1AivO6O9352LeP1b7vnDMzw263N5jN+/17r/gLXXFmAObkBBgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIZfQAfDv27emFOK+7051bjHouM6i//fqOhdcb9S/a77nu/JrVAGBFToABAACIIIABAACIIIABAACIIIABAACIIIABAACIIIABAACIIIABAACIIIABAACIIIABAACIUEYPQKtj3ypXz+t++rN19TvXtTy3RcvMdaNWssWotzCnFfdGvzc46rnMb8W3v+LMAPTjBBgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIZfQArOrYt8rV87pfOMtPn1ufeU79Zn6/tWphnVlLy3/sqN/+ijMD8H6cAAMAABBBAAMAABBBAAMAABBBAAMAABBBAAMAABBBAAMAABBBAAMAABBBAAMAABBBAAMAABChjB4AftOxb5Wr53UPeW6LFWdeUb91XnE/M7+WvTHqt7/izAC8HyfAAAAARBDAAAAARBDAAAAARBDAAAAARBDAAAAARBDAAAAARBDAAAAARBDAAAAARBDAAAAARCijB6DVed2Vq8e+WeIXrEa/t+ANrv5LqT+3xYozAwCM5QQYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACGX0AHw7r/vphTj2bbmZ659t+UYtU7UY9RbmNOfeqH921M5p0W/mtP08am+krTMAzMAJMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEe5fNr9AwAAADQnRNgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIpTRA/DtvO5OC3HsmyX+lbdgJX/OSr6G/w0AgL/lBBgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIAhgAAIAIZfQAKc7rrlw99u3Nnrsiq8Fs/G8AAPwuJ8AAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEEMAAAABEKKMHYF7ndVeuHvu23HPrd67r9337zVw3aiVH7Steo+X9rvgLBQDW4gQYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACAIYAACACGX0APA6x75Vrp7X/cJZfvrc+syjntuykv2+EfPrtzfsOgDgJ5wAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEKGMHoD/d1535eqxbxYx9u3DWvxfAQBjOQEGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgQhk9AP/v2LfK1fO6n/7sKPWZmf8NjrLibgcAYB5OgAEAAIgggAEAAIgggAEAAIgggAEAAIgggAEAAIgggAEAAIgggAEAAIgggAEAAIgggAEAAIjwKJ9fo2fg47zup1fh2Len71z/bF3azHUtU73fzKN2Tpo590a/3++czwUA1uIEGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAiP8vk1egYAAADozgkwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEcroAVKc1z3kuce+DXkur9k53i/4pQAAP+cEGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAgCGAAAgAhl9AB8O/at00Kc1z3kuQAAALNxAgwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAEAEAQwAAECEMnoAVnVed6c7H/sWNXPLVPXP9lvJFbWsc30lR72FOffzqLfQz4rrDAD8iRNgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIghgAAAAIpTRA/DtvO5OC3HsW6epWu7c77krzjznN0rT7y2k7ed+M/f7n1xxnQGA5zgBBgAAIIIABgAAIIIABgAAIIIABgAAIIIABgAAIIIABgAAIIIABgAAIIIABgAAIIIABgAAIEIZPQDfjn3rtBDndQ95LsDvqv9f1f/rWvS7MwDwek6AAQAAiCCAAQAAiCCAAQAAiCCAAQAAiCCAAQAAiCCAAQAAiCCAAQAAiCCAAQAAiCCAAQAAiFBGDwCMcV535eqxby+cZXZWI5m3DwDvxAkwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAEQQwAAAAER7l82v0DBHO6x7y3GPflvtGZn7NW+i3znOqr9WoXdfyXL/Bn0tbZwDgT5wAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEEEAAwAAEOFRPr9GzwAAAADdOQEGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAAAgggAGAADgI8G/YhsJg6gdJcIAAAAASUVORK5CYII=" alt="Misc" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Misc</h3>
+            <span class="kbd-hint">Esc で Top へ</span>
+          </div>
+          <p>接続に関係しない項目をまとめた画面。<code>Display</code> と <code>Quiet</code> は現在値でラベルが入れ替わる（消灯中は <code>Display On</code>、Quiet 有効中は <code>Quiet Off</code>）。どちらも選ぶとメニューを閉じる。</p><ul class="item-list"><li>Battery — 電圧と残量の表示</li><li>Display Off / On — 手動消灯の切り替え</li><li>Quiet On / Off — 内蔵 DC-DC を低ノイズ側へ固定</li><li>Boot mode — 書き込みモードへ再起動</li></ul>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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CGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAACvgr/Z3Pd0WP2G5wAAAABJRU5ErkJggg==" alt="Battery（電圧表示）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Battery（電圧表示）</h3>
+            <span class="kbd-hint">Esc で Misc へ</span>
+          </div>
+          <p>実測電圧とバッテリー残量の概算 % を表示するだけの画面（リストではない）。充電中は充電電圧を見てしまうため実際より高く出る点に注意。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAFACAIAAABskUbfAAAIfklEQVR4nO3ZwXGjMABA0c0Oh5zCwS24/4rcgg90sBWsZhIiG/jvXTUGIWSYP3wsn19//u/x3Aaj99s6GAX2u95/8HpXxLWNd+wedjsAvN7fN5wTAAAAXk4AAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgYRkP32/rYPTx3H78W6DJk4Gjede7zDsUAF7PF2AAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABI+ls+vSYd+PLfB6P22TjrvGY3Xao9563zMOe/ZdXuuaN6c93jXv+xdK1nbG8dcqz1H3uOM7xRvSQB4PV+AAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIWOYd+n5bB6OP5/bj357RGa/3XXOed95jHvl6/5Q9V/Qux9wbZ3S958b1ZgUAZb4AAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQsMw79OO5DUbvt3XeqcGu41s8kV5j/F44I286ADgXX4ABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEhY9vz48dwGo/fbuufg/Ar3CHuD7z4Z5rnee+F6VwQA1+YLMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACct4+PHcBqP32/rb87ms8VqN13neea835+uZdxfmrfOeWXnmHOHuH/PIe847jx0LAOfiCzAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkfy+fXu+cAAAAA0/kCDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAABAggAGAAAgQQADAACQIIABAABIEMAAAAAkCGAAAAASBDAAAAAJAhgAAIAEAQwAAECCAAYAACBBAAMAAJAggAEAAEgQwAAAACQIYAAAABIEMAAAAAkCGAAAgAQBDAAAQIIABgAAIEEAAwAAkCCAAQAASBDAAAAAJAhgAAAAEgQwAAAACQIYAACABAEMAADAn4J/Vf+bTMM8+LAAAAAASUVORK5CYII=" alt="Boot mode（確認）" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Boot mode（確認）</h3>
+            <span class="kbd-hint">Enter:実行 Esc:キャンセル</span>
+          </div>
+          <p><code>Enter</code> で BOOTSEL（UF2 書き込み）モードへ即座に再起動する。破壊的操作のため <code>Misc</code> の最後尾に置かれている。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="oled"><img class="screen-img" src="data:image/png;base64,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" alt="再起動直前" width="128" height="32"></div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>再起動直前</h3>
+            <span class="kbd-hint"></span>
+          </div>
+          <p>ブートローダへ落ちる直前に <code>Booting...</code> を中央表示する。省電力でパネルが消えていても見えるよう、この間だけ点灯を強制する。</p>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section id="icons">
+      <h2>アイコンとマーカー</h2>
+      <p class="section-lede">
+        右上に表示されるインジケータ用グリフ。ASCII 印字可能文字（0x20–0x7E）の続きに
+        独自グリフを追加している。
+      </p>
+      <div class="icon-legend">
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABOUlEQVR4nO3doQ3CYBCA0b8EgQLBCt1/IgQLIBBougFfKhpKeG+Cy5dTZ246ns5jjdvjObY0Xy9jTw7fHmDvBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFCY7q/3+GXzxvcjGxQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUJjW/pv/NzYoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaDx2QK0BQdMhlJusgAAAABJRU5ErkJggg==" alt="battery 5/5" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">5/5</span>
+            <span class="icon-desc">75% 以上</span>
+          </div>
+        </div>
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABRUlEQVR4nO3dsQkCQRBA0T0xMNLAFuy/ogtswMDAWDvwc8Hhgu9VMHwmGhZ2OZ7OY4v18Rx7ul0vYyaHXw8wO4GCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUlvvrPWa616wb7017z2ODgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKx7HRuvP7oNnYoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBwrL1v/l/Y4OCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBBrffQBd2g0IaPOMuQAAAABJRU5ErkJggg==" alt="battery 4/5" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">4/5</span>
+            <span class="icon-desc">50% 以上</span>
+          </div>
+        </div>
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABRElEQVR4nO3doQ0CQRBA0T2CQIGgBfqv6AQNIBBo6ICfExc24b0KJj+jRuwux9N5bLE+nmNPt+tlzOTw6wFmJ1AQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYHCcn+9x0z3mnXjvWnveWxQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkDhODZad34/aDY2KAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsGz9b/7f2KAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgcZ3H5CNDQjWDmAiAAAAAElFTkSuQmCC" alt="battery 2/5" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">2/5</span>
+            <span class="icon-desc">25% 以上</span>
+          </div>
+        </div>
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABRElEQVR4nO3doQ0CQRBA0T2CQIGgBfqv6AQNIBBo6ICfExc24b0KJj+jxsxyPJ3HFuvjOfZ0u17GTA6/HmB2AgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgs99d7zHSvWTfem/aexwYFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBSOY6N15/9is7FBQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgKFZeu/+X9jg4JAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQEGt99AMNADQhCrSbDAAAAAElFTkSuQmCC" alt="battery 0/5" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">0/5</span>
+            <span class="icon-desc">25% 未満</span>
+          </div>
+        </div>
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABUklEQVR4nO3csY3CQBBA0TVycBEEtED/FTm4BggIiKEC+LJ0FmfxXmpHX+NkNd5p/jkOXju8eYZAzQQFgYJAQaAgUBAoCBQECgIFgYJAQaAgUJjHxpbrbdX7l/Np/CcmKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgvz4PWlae7+ydCQoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKEy/98f4JpeV+0cmKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgMG19f9Cy8T7R1v+XmaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgT59f9Ba7g/aGZ9YECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBPr0ftHcmKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGg8d4TVIUNa+W+O3sAAAAASUVORK5CYII=" alt="charging" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">充電中</span>
+            <span class="icon-desc">USB 接続中に右端へ表示する矢印アイコン</span>
+          </div>
+        </div>
+        <div class="icon-row">
+          <div class="icon-frame"><img class="icon-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAACACAIAAAB7vvvtAAABUUlEQVR4nO3csQ2CUBRAUTAUVlq4gvtPROECFhbWuoE3JP5I4jk1IeTm0bx8mJfjaRppvT82XX+9nKc9Ofz6AfZOoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAoV56z5o3bjfGW30/sgEBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgU5tvzNY3cv6yDzweNvr8JCgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoCBQECgIFgYJAQaAgUBAoLHv7X89Wvhf7Ma9YECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgv8HBRMUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgINC3zwf9GxMUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgIND02RtK1hQMXmYaHgAAAABJRU5ErkJggg==" alt="usb" width="6" height="8"></div>
+          <div class="icon-text">
+            <span class="icon-label">USB</span>
+            <span class="icon-desc">USB 接続中に表示するトライデント（矢印の左隣）</span>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="keys">
+          <thead><tr><th>表示</th><th>場所</th><th>意味</th></tr></thead>
+          <tbody><tr><td class="key">&gt;</td><td>一覧画面の左端</td><td>カーソル位置。<code>↑</code>/<code>↓</code> で動かす</td></tr><tr><td class="key">(C)</td><td>Connect / BLE reset / BLE swap</td><td>現在接続しているスロット</td></tr><tr><td class="key">(F)</td><td>BLE swap（入れ替え先）</td><td>先に選んだ入れ替え元のスロット</td></tr><tr><td class="key">ON / OFF</td><td>Mac mode</td><td>そのスロットの Mac モードの現在値</td></tr><tr><td class="key">取り消し線</td><td>Connect / BLE reset / BLE swap</td><td>ボンドが無い（未ペアリング）スロット</td></tr><tr><td class="key">M</td><td>ステータス画面の右上</td><td>接続中スロットが Mac モード</td></tr><tr><td class="key">_</td><td>名前入力</td><td>文字入力カーソル</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="font">
+      <h2>内蔵フォント</h2>
+      <p class="section-lede">
+        <code>display/ssd1306.c</code> の <code>font_data[]</code> 全 103 文字（0x20–0x86）。
+        1 文字は 5×7 ドット + 字間 1px の 6×8 で、1 行は最大 21 文字・1 画面は 4 行。
+        <code>0x7F</code>（BTマーク）と <code>0x80</code>（✕印）はフォントには入っているが、
+        現在の画面描画では使っていない。
+      </p>
+      <div class="font-sheet">
+        <img src="data:image/png;base64,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" alt="6x8 フォント一覧">
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>既知の制限</h2>
+      <div class="notes">
+        <ul>
+          <li><b>バッテリー残量は電圧からの概算</b> — 充電中は充電電圧を見てしまうため、実際より高く表示される。
+            残量アイコン・<code>Battery</code>画面・BLE通知はすべて同じ換算 % を参照するため、この誤差も含めて表示は一致する</li>
+          <li><b>ペアリング中に既知デバイスから接続要求が来たら無視する</b> — 切断して待機を続けるため、
+            同じホストと再ペアリングするには先にそのスロットを <code>BLE reset</code> する</li>
+          <li><b>ペアリング中にパスキーは表示されない</b> — <code>ble/ble_hid.c</code> が
+            <code>IO_CAPABILITY_NO_INPUT_NO_OUTPUT</code>（MITM 要求なし）で初期化するため、
+            ペアリングは常に Just Works になる。<code>ui/screen.c</code> には
+            <code>Code:######</code> を描く経路があるが、現在の設定では到達しない</li>
+          <li><b>Quiet mode は電池持ちとのトレードオフ</b> — 内蔵 DC-DC を低ノイズ側へ固定するため、
+            軽負荷時の効率が落ちる。ノイズが気になる場面だけ有効にする</li>
+          <li><b>表示できる文字数の上限</b> — 1 行 21 文字・4 行まで。スロット名は 10 文字までで、
+            それを超える入力は受け付けない</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>display/ssd1306.c の font_data[] と ui/screen.c の描画ロジックから生成したプレビュー</footer>

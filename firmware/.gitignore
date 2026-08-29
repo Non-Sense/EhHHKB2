@@ -1,0 +1,6 @@
+build
+.vscode/
+.idea/
+/.cache/
+/build-tests/
+/scripts/.venv/

@@ -1,0 +1,43 @@
+PRIMARY_SERVICE, GAP_SERVICE
+CHARACTERISTIC, GAP_DEVICE_NAME, READ, "EhHHKB2"
+
+#import <battery_service.gatt>
+#import <device_information_service.gatt>
+
+// HID Service. BTstack's bundled hids.gatt declares only one Input report
+// (id 1), so this is a local copy with a second Input report (id 2) added for
+// Consumer Control (media keys). Everything else matches hids.gatt.
+//
+// hids_device_init_with_storage() walks the Report characteristics in
+// declaration order and registers (report id, type) from each
+// REPORT_REFERENCE. Senders pick the report with
+// hids_device_send_input_report_for_id().
+//
+// Comments here are ASCII on purpose: the gatt compiler copies them verbatim
+// into the generated header, where non-ASCII gets mangled. See ble_hid.c for
+// the detailed notes.
+PRIMARY_SERVICE, ORG_BLUETOOTH_SERVICE_HUMAN_INTERFACE_DEVICE
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_PROTOCOL_MODE, DYNAMIC | READ | WRITE_WITHOUT_RESPONSE,
+
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_REPORT, DYNAMIC | READ | WRITE | NOTIFY | ENCRYPTION_KEY_SIZE_16,
+// report id = 1, type = Input (1): keyboard
+REPORT_REFERENCE, READ, 1, 1
+
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_REPORT, DYNAMIC | READ | WRITE | NOTIFY | ENCRYPTION_KEY_SIZE_16,
+// report id = 2, type = Input (1): consumer control
+REPORT_REFERENCE, READ, 2, 1
+
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_REPORT, DYNAMIC | READ | WRITE | WRITE_WITHOUT_RESPONSE | ENCRYPTION_KEY_SIZE_16,
+// report id = 1, type = Output (2): keyboard LEDs. The report map declares the
+// LED Output items under Report ID 1 as well.
+REPORT_REFERENCE, READ, 1, 2
+
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_REPORT_MAP, DYNAMIC | READ,
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_BOOT_KEYBOARD_INPUT_REPORT, DYNAMIC | READ | WRITE | NOTIFY,
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_BOOT_KEYBOARD_OUTPUT_REPORT, DYNAMIC | READ | WRITE | WRITE_WITHOUT_RESPONSE,
+// bcdHID = 0x101 (v1.0.1), bCountryCode 0, remote wakeable = 0 | normally connectable 2
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_HID_INFORMATION,  READ, 01 01 00 02
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_HID_CONTROL_POINT, DYNAMIC | WRITE_WITHOUT_RESPONSE,
+
+PRIMARY_SERVICE, GATT_SERVICE
+CHARACTERISTIC, GATT_DATABASE_HASH, READ,

@@ -1,0 +1,4 @@
+# render_screens.py が OLED 画面の PNG 化に使う。build_manual.py は標準ライブラリのみ。
+# 10.1.0 以上を要求するのは ImageFont.load_default(size=...) を使うため
+# （それ未満でも size なしの load_default() にフォールバックするが、字が小さくなる）。
+pillow>=10.1.0
